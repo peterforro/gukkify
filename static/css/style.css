@@ -19,6 +19,10 @@ a {
     color: white;
 }
 
+img {
+    border-radius: 25px;
+}
+
 /*----------------- HEADER -----------------*/
 header{
     width: 90%;
