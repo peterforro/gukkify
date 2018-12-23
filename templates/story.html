@@ -14,14 +14,12 @@
 {% block content %}
     <div class="post_card">
         <p>
-            <b>Posted: </b>{{ post.submission_time }}
+            <b>Posted: </b>{{ post.submission_time }}<br>
             <b>Story: </b>{{ post.story }}
-        {% if files %}
-            {% for file in files %}
-                <img src="https://s3.eu-north-1.amazonaws.com/gukkify69/{{ file.filename }}">
-            {% endfor %}
-        {% endif %}
     </div>
-
-
+    {% if files %}
+        {% for file in files %}
+            <img class="pics" src="https://s3.eu-north-1.amazonaws.com/gukkify69/{{ file.filename }}">
+        {% endfor %}
+    {% endif %}
 {% endblock %}
