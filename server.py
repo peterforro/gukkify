@@ -14,6 +14,7 @@ app.secret_key = 'VerySecretKey'
 app.config.from_pyfile('config.cfg')
 mail = Mail(app)
 s = URLSafeTimedSerializer('VerySecretKey')
+img_url = "https://s3.eu-north-1.amazonaws.com/gukkify69/"
 
 
 
@@ -127,7 +128,7 @@ def home():
     posts = get_posts()
     for post in posts:
         files = get_post_files(post['id'])
-        post['sample_img'] = "https://s3.eu-north-1.amazonaws.com/gukkify69/" + choice(files)['filename']
+        post['sample_img'] = img_url + choice(files)['filename']
     return render_template('home.html',posts=posts)
 
 
@@ -165,9 +166,6 @@ def delete_file(filename):
 def story(post_id):
     post = get_post(post_id)
     files = get_post_files(post_id)
-    for file in files:
-        file['url'] = s3_generate_url(file['filename'])
-    print(files)
     return render_template('story.html',post=post,files=files)
 
 

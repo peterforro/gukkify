@@ -11,7 +11,17 @@
 {% endblock %}
 
 
-
 {% block content %}
-    <div class=""
+    <div class="post_card">
+        <p>
+            <b>Posted: </b>{{ post.submission_time }}
+            <b>Story: </b>{{ post.story }}
+        {% if files %}
+            {% for file in files %}
+                <img src="https://s3.eu-north-1.amazonaws.com/gukkify69/{{ file.filename }}">
+            {% endfor %}
+        {% endif %}
+    </div>
+
+
 {% endblock %}
