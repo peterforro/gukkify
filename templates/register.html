@@ -2,17 +2,17 @@
 
 
 {% block page_title %}
-    DigitalD
+    Gukkify - Registration
 {% endblock %}
 
 
 {% block title %}
-    DigitalD
+    Gukkify - Registration
 {% endblock %}
 
 
 {% block content %}
-    <div>
+    <div class="forms" id="register_form">
         <form action="" method="POST">
             {{ form.hidden_tag() }}
             {{ form.user_name(placeholder="Gukki name") }}

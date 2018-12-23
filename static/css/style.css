@@ -83,7 +83,7 @@ header a:hover{
     text-align: center;
 }
 
-#login_form{
+#login_form, #register_form{
     width: 450px;
 }
 
@@ -91,6 +91,11 @@ header a:hover{
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 20px;
+}
+
+
+#register_form {
+    margin-top: 150px;
 }
 
 .forms input[type='text'],

@@ -26,7 +26,8 @@ create table if not exists posts
 	user_id integer
 		constraint posts_users_id_fk
 			references users
-				on update cascade on delete cascade
+				on update cascade on delete cascade,
+	title text
 );
 
 

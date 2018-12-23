@@ -128,6 +128,7 @@ def home():
     for post in posts:
         files = get_post_files(post['id'])
         post['sample_img'] = s3_generate_url(choice(files)['filename'])
+        print(post['sample_img'])
     return render_template('home.html',posts=posts)
 
 
