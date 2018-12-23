@@ -1,7 +1,7 @@
 #Docs: http://boto3.readthedocs.io/en/latest/guide/s3.html
 import boto3
 
-bucket_name = 'gukkify'
+bucket_name = 'gukkify69'
 aws_access_key_id = "AKIAJIXDUF3SP2VZ5LUA"
 aws_secret_access_key = "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"
 
