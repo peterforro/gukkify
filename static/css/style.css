@@ -1,0 +1,162 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #262A2D;
+    font-family: 'Gloria Hallelujah', cursive;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    color: white;
+}
+
+h1 {
+    color: white;
+}
+
+/*----------------- HEADER -----------------*/
+header{
+    width: 90%;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 25px;
+    background-color: #539330;
+}
+
+header table{
+    width: 100%;
+}
+
+header #right{
+    text-align: right;
+}
+
+header a{
+    color: white;
+    text-decoration: none;
+    border: 1px solid #70D12E;
+    padding: 10px;
+    border-radius: 25px;
+    box-shadow: 1px 1px 1px 1px black;
+    transition: 0.3s;
+}
+
+header a:hover{
+    background-color: #70D12E;
+    transition: 0.3s;
+}
+
+
+
+/*-----------------POST CARD-----------------*/
+.post_card {
+    display: block;
+    margin: auto;
+    width: 20%;
+    background-color: #494B50;
+    border-radius: 25px;
+    box-shadow: 2px 2px 2px black;
+    padding: 20px;
+    transition: 0.3s;
+}
+
+.post_card:hover {
+    background-color: #8f9397;
+    transition: 0.3s;
+}
+
+.post_card img{
+    margin-right: 20px;
+}
+
+
+/*-----------------FORMS-----------------*/
+.forms{
+    display: block;
+    margin: auto;
+    width: 20%;
+    background-color: #494B50;
+    border-radius: 25px;
+    box-shadow: 2px 2px 2px black;
+    padding: 25px;
+    transition: 0.3s;
+    text-align: center;
+}
+
+#login_form{
+    width: 450px;
+}
+
+#login_form p{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.forms input[type='text'],
+.forms input[type='password'],
+.forms textarea {
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    height: 30px;
+    border-radius: 25px;
+    margin: 10px 0;
+    outline: none;
+    box-shadow: 1px 1px 1px 1px black;
+}
+
+.forms input[type='submit']{
+    width: 60%;
+    height: 30px;
+    border-radius: 25px;
+    box-shadow: 1px 1px 1px 1px black;
+    background-color: #6A6D71;
+    transition: 0.3s;
+}
+
+.forms input[type='submit']:hover{
+    background-color: #a8abaf;
+    transition: 0.3s;
+}
+
+#post_form{
+    margin-top: 100px;
+    width: 40%;
+}
+
+#post_form textarea{
+    height: 140px;
+}
+
+#post_form input[type='select']{
+    display: inline-block;
+    float: left;
+}
+
+#post_form input[type='file']{
+    display: inline-block;
+    float: right;
+}
+
+#post_form input[type='submit']{
+    display: block;
+    margin: 10px auto;
+}
+
+
+/*-----------------PUG-----------------*/
+#pug{
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    display: block;
+}
+
+
+
+/*-----------------PICS-----------------*/
+.pics {
+    width: 150px;
+}

@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+
+{% block page_title %}
+    DigitalD
+{% endblock %}
+
+
+{% block title %}
+    DigitalD
+{% endblock %}
+
+
+{% block content %}
+    <div>
+        <form action="" method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.user_name(placeholder="Gukki name") }}
+            {{ form.email(placeholder="E-mail") }}
+            {{ form.password(placeholder="Password") }}
+            {{ form.confirm_password(placeholder="Confirm Password") }}
+            {{ form.submit() }}
+        </form>
+    </div>
+{% endblock %}

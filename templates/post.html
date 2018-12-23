@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+
+{% block page_title %}
+    GUKKIFY - POST
+{% endblock %}
+
+
+{% block title %}
+    GUKKIFY - NEW GUKKI STORY
+{% endblock %}
+
+
+{% block nav_btns %}
+    <a href="{{ url_for('home') }}">Home</a>
+{% endblock %}
+
+
+{% block content %}
+    <div class="forms" id="post_form">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            {{ form.title(placeholder='Title') }}
+            {{ form.story(placeholder='Here Comes The Gukki Story!') }}
+            {{ form.category.label }}
+            {{ form.category() }}
+            {{ form.pictures() }}
+            {{ form.submit() }}
+        </form>
+    </div>
+{% endblock %}

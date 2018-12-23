@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+
+{% macro back_login_btn() %}
+    {% if 'user_id' in session %}
+        <a href="{{ url_for('home') }}">Home</a>
+    {% else %}
+        <a href="{{ url_for('login') }}">Sign in</a>
+    {% endif %}
+{% endmacro %}
+
+
+{% block page_title %}
+    Error: 404 - Page Not Found
+{% endblock %}
+
+
+{% block title %}
+    Error: 404 - Page Not Found
+{% endblock %}
+
+
+{% block nav_btns %}
+    {{ back_login_btn() }}
+{% endblock %}
+
+
+{% block content %}
+    Here comes a picture for the error page!
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+
+{% block page_title %}
+    Gukkify!
+{% endblock %}
+
+
+{% block title %}
+    Gukkify!
+{% endblock %}
+
+
+
+{% block content %}
+    <img id="pug" src="{{ url_for('static',filename='pics/pug.png') }}">
+    <div class="forms" id="login_form">
+        <form action="" method="POST">
+            <p>Welcome to Gukkify.hu!</p>
+            {{ form.hidden_tag() }}
+            {{ form.email(placeholder="E-mail") }}
+            {{ form.password(placeholder="Password") }}
+            {{ form.submit() }}
+            {{ form.remember_me.label() }}
+            {{ form.remember_me() }}
+        </form>
+        <br><hr>
+        <small>
+            Not a member?
+            <a href="{{ url_for("register") }}">Sign up!</a>
+        </small>
+    </div>
+    <script>
+        let header = document.querySelector('header');
+        header.remove();
+    </script>
+{% endblock %}
