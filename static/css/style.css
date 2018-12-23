@@ -61,7 +61,7 @@ header a:hover{
 /*-----------------POST CARD-----------------*/
 .post_card {
     display: block;
-    margin: auto;
+    margin: 20px auto;
     width: 20%;
     background-color: #494B50;
     border-radius: 25px;
