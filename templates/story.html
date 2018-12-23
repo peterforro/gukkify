@@ -11,15 +11,23 @@
 {% endblock %}
 
 
+{% block nav_btns %}
+     <a href="{{ url_for('home') }}">Home</a>
+{% endblock %}
+
+
+
 {% block content %}
     <div class="post_card">
         <p>
             <b>Posted: </b>{{ post.submission_time }}<br>
             <b>Story: </b>{{ post.story }}
     </div>
-    {% if files %}
-        {% for file in files %}
-            <img class="pics" src="https://s3.eu-north-1.amazonaws.com/gukkify69/{{ file.filename }}">
-        {% endfor %}
-    {% endif %}
+    <div class="image_card">
+        {% if files %}
+            {% for file in files %}
+                <img class="pics" src="https://s3.eu-north-1.amazonaws.com/gukkify69/{{ file.filename }}">
+            {% endfor %}
+        {% endif %}
+    </div>
 {% endblock %}

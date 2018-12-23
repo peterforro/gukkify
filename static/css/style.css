@@ -169,3 +169,18 @@ header a:hover{
 .pics {
     width: 150px;
 }
+
+
+
+
+/*-----------------image card--------------*/
+.image_card {
+    display: block;
+    margin: auto;
+    width: 70%;
+    background-color: #494B50;
+    border-radius: 25px;
+    box-shadow: 2px 2px 2px black;
+    padding: 20px;
+    transition: 0.3s;
+}
