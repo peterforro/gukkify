@@ -1,4 +1,4 @@
-from connection import connection_handler
+from db_connection import connection_handler
 from psycopg2 import sql
 import bcrypt, uuid
 
