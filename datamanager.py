@@ -63,7 +63,7 @@ def confirm_account(cursor,user_name):
 
 
 @connection_handler
-def add_file_to_db(cursor, data):
+def add_file(cursor, data):
     query = ''' INSERT INTO files (post_id,user_id,category,filename)
                 VALUES (%(post_id)s,%(user_id)s,%(category)s,%(filename)s)'''
     cursor.execute(query,data)
@@ -71,12 +71,22 @@ def add_file_to_db(cursor, data):
 
 
 @connection_handler
-def add_post_to_db(cursor,data):
+def add_post(cursor, data):
     query = ''' INSERT INTO posts (submission_time,story,user_id,title)
                 VALUES (%(submission_time)s,%(story)s,%(user_id)s,%(title)s);
                 SELECT MAX(id) AS id FROM posts;'''
     cursor.execute(query,data)
     return cursor.fetchone()['id']
+
+
+
+
+@connection_handler
+def remove_post(cursor,post_id):
+    query = ''' DELETE FROM posts
+                WHERE id=%(post_id)s'''
+    params = {'post_id':post_id}
+    cursor.execute(query,params)
 
 
 
@@ -103,6 +113,16 @@ def get_filename_by_id(cursor,picture_id):
 def get_files(cursor):
     query = ''' SELECT filename FROM files'''
     cursor.execute(query)
+    return cursor.fetchall()
+
+
+
+@connection_handler
+def get_post_files(cursor,post_id):
+    query = ''' SELECT * FROM files
+                WHERE post_id=%(post_id)s'''
+    params = {'post_id':post_id}
+    cursor.execute(query,params)
     return cursor.fetchall()
 
 

@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+
+{% block page_title %}
+    Gukkify! - Admin
+{% endblock %}
+
+
+{% block title %}
+    Gukkify! - Admin
+{% endblock %}
+
+
+
+{% block content %}
+    <ul>
+        {% for file in files %}
+            <li>{{ file.key }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

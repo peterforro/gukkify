@@ -5,7 +5,7 @@ from forms import *
 from datetime import timedelta, datetime
 from functools import wraps
 from datamanager import *
-from s3bucket import s3_upload, s3_delete_file, s3_generate_url
+from s3bucket import *
 from random import choice
 
 
@@ -141,11 +141,11 @@ def new_story():
         data = form.data
         data['submission_time'] = datetime.now()
         data['user_id'] = session['user_id']
-        data['post_id'] = add_post_to_db(data)
-        for picture in data['pictures']:
-            data['filename'] = picture.filename = create_random_filename(picture.filename)
-            add_file_to_db(data)
-            s3_upload(picture)
+        data['post_id'] = add_post(data)
+        for file in data['files']:
+            data['filename'] = file.filename = create_random_filename(file.filename)
+            add_file(data)
+            s3_upload_file(file)
         return redirect(url_for('home'))
     return render_template("post.html",form=form)
 
@@ -160,7 +160,6 @@ def delete_file(filename):
 
 
 
-
 @app.route('/story/<int:post_id>')
 @login_required
 def story(post_id):
@@ -170,14 +169,22 @@ def story(post_id):
 
 
 
-@app.route('/delete_posts')
+@app.route('/delete_post/<int:post_id>')
 @login_required
-def delete_posts():
-    files = get_files()
+def delete_post(post_id):
+    files = get_post_files(post_id)
     for file in files:
         s3_delete_file(file['filename'])
-    delete_records('posts')
+    remove_post(post_id)
     return redirect(url_for('home'))
+
+
+
+@app.route('/admin')
+def admin():
+    # files = s3_connection().Bucket('gukkify69').objects.all()
+    return render_template('admin.html')
+
 
 
 

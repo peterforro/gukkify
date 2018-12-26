@@ -3,25 +3,43 @@ import boto3
 
 bucket_name = 'gukkify69'
 
-s3 = boto3.client('s3')
-# print('S3 connection: ',s3)
 
-
-def s3_upload(file, acl="public-read"):
+def s3_connection():
     try:
-        ExtraArgs = {"ACL":acl, "ContentType":file.content_type}
-        s3.upload_fileobj(file,bucket_name,file.filename,ExtraArgs=ExtraArgs)
-        print('AWS S3 Upload Successful')
+        s3 = boto3.resource('s3')
+        bucket = s3.Bucket(bucket_name)
+        print('AWS S3 bucket: connected successfully!')
+        return s3,bucket
     except Exception:
-        print('AWS S3 Upload Error!')
+        print('AWS S3 Bucket: connection failed!')
 
 
 
-def s3_generate_url(filename):
-        params = {'Bucket':bucket_name, 'Key':filename}
-        return s3.generate_presigned_url(ClientMethod='get_object',Params= params)
+def s3_get_all_objs(bucket_name):
+    bucket = s3_connection()[1]
+    objs = bucket.objects.all()
+    for i,obj in enumerate(objs):
+        print(f"{i+1}){obj.key} - {obj.last_modified}")
+    return objs
+
+
+
+def s3_upload_file(file):
+    bucket = s3_connection()[1]
+    try:
+        bucket.Object(file.filename).put(Body=file)
+        print(f'AWS S3 Bucket - File Upload Succeeded!: {file}')
+    except Exception:
+        print(f'AWS S3 Bucket - File Upload Failed!: {file}')
 
 
 
 def s3_delete_file(filename):
-    s3.delete_object(Bucket=bucket_name, Key=filename)
+    bucket = s3_connection()[1]
+    try:
+        bucket.Object(filename).delete()
+        print(f'AWS S3 Bucket - File Delete Succeeded!: {filename}')
+    except Exception:
+        print(f'AWS S3 Bucket - File Delete Failed!: {filename}')
+
+

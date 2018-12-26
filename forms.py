@@ -24,6 +24,6 @@ class LoginForm(FlaskForm):
 class PostForm(FlaskForm):
     title = StringField(validators=[DataRequired()])
     story = TextAreaField(validators=[DataRequired()])
-    pictures = MultipleFileField('Select Pictures',validators=[DataRequired()])
+    files = MultipleFileField('Select Pictures',validators=[DataRequired()])
     category = SelectField('Select Category',choices=[('adult', '18+'), ('love', 'Love<3'), ('family', 'Family')])
     submit = SubmitField('Gukkify!')
