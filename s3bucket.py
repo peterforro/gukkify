@@ -4,7 +4,7 @@ import boto3
 bucket_name = 'gukkify69'
 
 s3 = boto3.client('s3')
-print('S3 connection: ',s3)
+# print('S3 connection: ',s3)
 
 
 def s3_upload(file, acl="public-read"):
