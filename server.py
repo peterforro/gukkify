@@ -7,6 +7,7 @@ from functools import wraps
 from datamanager import *
 from s3bucket import *
 from random import choice
+from flask_bootstrap import Bootstrap
 
 
 app = Flask(__name__)
@@ -15,6 +16,7 @@ app.config.from_pyfile('config.cfg')
 mail = Mail(app)
 s = URLSafeTimedSerializer('VerySecretKey')
 img_url = "https://s3.eu-north-1.amazonaws.com/gukkify69/"
+Bootstrap(app)
 
 
 
@@ -185,6 +187,12 @@ def admin():
     # files = s3_connection().Bucket('gukkify69').objects.all()
     return render_template('admin.html')
 
+
+
+@app.route('/proba')
+@login_required
+def proba():
+    return redirect(s3_get_url("6579e678-3982-4b17-a183-1180361602ad.jpg"))
 
 
 

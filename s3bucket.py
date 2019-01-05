@@ -43,3 +43,11 @@ def s3_delete_file(filename):
         print(f'AWS S3 Bucket - File Delete Failed!: {filename}')
 
 
+
+def s3_get_url(filename):
+    s3Client = boto3.client('s3')
+    return s3Client.generate_presigned_url('get_object',
+                                    Params = {'Bucket': 'www.mybucket.com', 'Key': 'hello.txt'},
+                                    ExpiresIn = 100)
+
+

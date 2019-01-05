@@ -80,7 +80,6 @@ def add_post(cursor, data):
 
 
 
-
 @connection_handler
 def remove_post(cursor,post_id):
     query = ''' DELETE FROM posts
