@@ -2,7 +2,7 @@
 import boto3
 
 bucket_name = 'gukkify69'
-
+download_url = "/static/pitures/"
 
 def s3_connection():
     try:
@@ -51,3 +51,10 @@ def s3_get_url(filename):
                                     ExpiresIn = 100)
 
 
+def s3_download_file(filename):
+    bucket = s3_connection()[1]
+    try:
+        bucket.download_file(filename,download_url+filename)
+        print(f'AWS S3 Bucket - File Donwload Succeeded!: {filename}')
+    except Exception:
+        print(f'AWS S3 Bucket - File Donwload Failed!: {filename}')

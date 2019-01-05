@@ -15,8 +15,6 @@ app.secret_key = 'VerySecretKey'
 app.config.from_pyfile('config.cfg')
 mail = Mail(app)
 s = URLSafeTimedSerializer('VerySecretKey')
-img_url = "https://s3.eu-north-1.amazonaws.com/gukkify69/"
-Bootstrap(app)
 
 
 
@@ -130,7 +128,7 @@ def home():
     posts = get_posts()
     for post in posts:
         files = get_post_files(post['id'])
-        post['sample_img'] = img_url + choice(files)['filename']
+        post['sample_img'] = download_url + choice(files)['filename']
     return render_template('home.html',posts=posts)
 
 
@@ -167,6 +165,8 @@ def delete_file(filename):
 def story(post_id):
     post = get_post(post_id)
     files = get_post_files(post_id)
+    for file in files:
+        s3_download_file(file)
     return render_template('story.html',post=post,files=files)
 
 
@@ -180,20 +180,6 @@ def delete_post(post_id):
     remove_post(post_id)
     return redirect(url_for('home'))
 
-
-
-@app.route('/admin')
-def admin():
-    # files = s3_connection().Bucket('gukkify69').objects.all()
-    return render_template('admin.html')
-
-
-
-@app.route('/proba')
-@login_required
-def proba():
-    print(s3_get_url("6579e678-3982-4b17-a183-1180361602ad.jpg"))
-    return redirect(url_for("home"))
 
 
 
