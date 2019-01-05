@@ -2,7 +2,7 @@
 import boto3
 
 bucket_name = 'gukkify69'
-download_url = "/static/pitures/"
+download_url = "./static/pics/"
 
 def s3_connection():
     try:
