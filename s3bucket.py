@@ -2,7 +2,7 @@
 import boto3
 
 bucket_name = 'gukkify69'
-download_url = "./static/pics/"
+download_url = "https://s3.eu-north-1.amazonaws.com/gukkify69/"
 
 def s3_connection():
     try:
@@ -24,13 +24,15 @@ def s3_get_all_objs(bucket_name):
 
 
 
+
 def s3_upload_file(file):
-    bucket = s3_connection()[1]
+    bucket = boto3.client("s3")
     try:
-        bucket.Object(file.filename).put(Body=file)
+        bucket.upload_fileobj(file,bucket_name,file.filename, ExtraArgs={'ACL': 'public-read'})
         print(f'AWS S3 Bucket - File Upload Succeeded!: {file}')
     except Exception:
         print(f'AWS S3 Bucket - File Upload Failed!: {file}')
+
 
 
 
