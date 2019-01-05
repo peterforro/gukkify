@@ -166,7 +166,7 @@ def story(post_id):
     post = get_post(post_id)
     files = get_post_files(post_id)
     for file in files:
-        s3_download_file(file.filename)
+        s3_download_file(file["filename"])
     return render_template('story.html',post=post,files=files)
 
 
