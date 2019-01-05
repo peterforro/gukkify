@@ -192,7 +192,8 @@ def admin():
 @app.route('/proba')
 @login_required
 def proba():
-    return redirect(s3_get_url("6579e678-3982-4b17-a183-1180361602ad.jpg"))
+    print(s3_get_url("6579e678-3982-4b17-a183-1180361602ad.jpg"))
+    return redirect(url_for("home"))
 
 
 
